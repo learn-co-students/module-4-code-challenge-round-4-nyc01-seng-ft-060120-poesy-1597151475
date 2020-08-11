@@ -3,22 +3,22 @@ import React from "react";
 class Poem extends React.Component {
 
   clickHandler = () => {
-    console.log("clicked")
-
+    this.props.poem.read = !this.props.poem.read
+    this.props.boolHandler(this.props.poem.id, this.props.poem.read)
   }
 
   readBool = () => {
     if(this.props.poem.read === false){
       return "Mark as read"
     }
-    else{
+    else if(this.props.poem.read === true){
       return "Mark as unread"
     }
   }
 
 
 
-  render() {
+  render() { 
     return (
       <div>
         <h3>{this.props.poem.title}</h3>

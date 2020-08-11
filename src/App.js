@@ -35,6 +35,19 @@ class App extends React.Component {
   }
 
 
+  boolHandler = (id, newBool) => {
+    fetch(`${API}/${id}`,{
+      method: 'PATCH',
+      headers: {
+        "Content-Type": 'application/json',
+        application: 'application/json'
+      },
+      body: JSON.stringify({read:newBool})
+    })
+    .then(response => response.json())
+    .then(data => this.fetchPoems())
+  }
+
   render() {
     return (
       <div className="app">
@@ -42,7 +55,7 @@ class App extends React.Component {
           <button>Show/hide new poem form</button>
           {true && <NewPoemForm submitHandler={this.submitHandler} />}
         </div>
-        <PoemsContainer poemsArray={this.state.poemArray} />
+        <PoemsContainer poemsArray={this.state.poemArray} boolHandler={this.boolHandler} />
       </div>
     );
   }

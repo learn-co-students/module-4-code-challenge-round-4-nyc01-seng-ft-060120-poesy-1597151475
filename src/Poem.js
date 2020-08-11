@@ -23,8 +23,8 @@ class Poem extends React.Component {
         <p>
           <strong>- By {this.props.poem.author}</strong>
         </p>
-        <button onClick={this.readThis}>Mark as read</button>
-        {this.state.read ? <button onClick={this.readThis}>Mark as unread</button> : null }
+        {this.state.read ? <button onClick={this.readThis}>Mark as read</button> : <button onClick={this.readThis}>Mark as unread</button> }
+        <button >Delete this Poem</button>
       </div>
     );
   }

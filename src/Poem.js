@@ -1,15 +1,24 @@
 import React from "react";
 
 class Poem extends React.Component {
+  state = {
+    clicked: false
+  }
+
+  clickRead = () => {
+    // console.log("clicked read")
+    this.setState({ clicked: !this.state.clicked })
+  }
+
   render() {
     return (
       <div>
-        <h3>Title</h3>
-        <p>Content</p>
+        <h3>{this.props.poemInfo.title}</h3>
+        <p>{this.props.poemInfo.content}</p>
         <p>
-          <strong>- By Author</strong>
+          <strong>- {this.props.poemInfo.author}</strong>
         </p>
-        <button>Mark as read</button>
+        {this.state.clicked ? <button onClick={this.clickRead}>Mark as unread</button> : <button onClick={this.clickRead}>Mark as read</button> }
       </div>
     );
   }

@@ -34,7 +34,7 @@ As a user:
 √1. When the app starts, I can see all currently created poems.
 √- Fetch request 
 
-2. I can show/hide the form to create new poems.
+√2. I can show/hide the form to create new poems.
 for last
 
 √3. I can create poems and they are still there when I refresh the page.

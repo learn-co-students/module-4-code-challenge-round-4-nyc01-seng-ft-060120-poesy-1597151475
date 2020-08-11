@@ -12,11 +12,22 @@ class NewPoemForm extends React.Component {
   submitHandler = (e) => {
     e.preventDefault()
     this.props.submitHandler(this.state)
+    this.resetInputValue()
   }
 
   changeHandler = (e) => {
     this.setState({ [e.target.name]:e.target.value })
   }
+
+  resetInputValue = () => {
+    const clear = ""
+    this.setState({
+      title: clear,
+      author: clear,
+      content: clear
+    })
+  }
+  //why isnt title resetting ... ? 
 
   render() {
     return (

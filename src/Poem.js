@@ -16,7 +16,8 @@ class Poem extends React.Component {
   }
   
   render() {
-		// console.log(this.props.poem)
+    // console.log(this.props.poem)
+    // console.log(this.props.deleteClickListener)
 		return (
 			<div>
 				<h3>{this.props.poem.title}</h3>
@@ -25,6 +26,7 @@ class Poem extends React.Component {
 					<strong>-{this.props.poem.author}</strong>
 				</p>
     <button onClick={this.clickHandler}>{this.state.buttonContent}</button>
+    <button onClick={() => this.props.deleteClickListener(this.props.poem.id)}>Delete</button>
 			</div>
 		);
 	}

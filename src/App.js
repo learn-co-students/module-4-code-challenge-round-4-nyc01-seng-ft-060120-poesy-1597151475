@@ -44,8 +44,20 @@ class App extends React.Component {
     })
     .then(resp => resp.json())
     .then(poem => console.log(poem))
-    
-	};
+  }; // .submitHandler
+  
+  deleteClickListener = (id) => {
+    // console.log(id)
+    let delArray = [...this.state.stateArray]
+    // console.log(delArray)
+    let newArray = delArray.filter(poem => poem.id !== id)
+    // console.log(newArray)
+    this.setState({stateArray: newArray})
+
+    fetch(`http://localhost:6001/poems/${id}`, {
+    method: "DELETE"
+    })
+  }
 
 	render() {
 		// console.log(this.state)
@@ -60,7 +72,7 @@ class App extends React.Component {
 						<NewPoemForm submitHandler={this.submitHandler} />
 					)}
 				</div>
-				<PoemsContainer stateArray={this.state.stateArray} />
+				<PoemsContainer stateArray={this.state.stateArray} deleteClickListener={this.deleteClickListener}/>
 			</div>
 		);
 	}

@@ -2,12 +2,15 @@ import React from "react";
 import "./App.css";
 import PoemsContainer from "./PoemsContainer";
 import NewPoemForm from "./NewPoemForm";
+import Favorites from "./Favorites";
+
 
 class App extends React.Component {
 
   state = {
     poems: [],
-    hidden: true
+    hidden: true,
+    favorites: []
   }
 
   componentDidMount(){
@@ -46,6 +49,17 @@ class App extends React.Component {
     this.setState({ poems: newPoems })
   }
 
+  // favoriteHandler = (id) => {
+  //   let favoritePoem = newArray.find(poemObj => poemObj.id === id)
+  //   if (favoritePoem === undefined) {
+
+  //   } else {
+  //     let newArray = [...this.state.favorites]
+  //     return [...newArray, favoritePoem]
+  //   }
+  //   // this.setState({favorites: [...newArray, favoritePoem]})
+  // }
+
   
 
 
@@ -57,7 +71,8 @@ class App extends React.Component {
           {this.state.hidden ? null : <NewPoemForm submitHandler={this.submitHandler}/>}
           {/* {false && <NewPoemForm />} */}
         </div>
-        <PoemsContainer poems={this.state.poems} deleteHandler={this.deleteHandler}/>
+        <PoemsContainer poems={this.state.poems} deleteHandler={this.deleteHandler} favoriteHandler={this.favoriteHandler}/>
+        {/* <Favorites poems={this.favoriteHandler()}/> */}
       </div>
     );
   }

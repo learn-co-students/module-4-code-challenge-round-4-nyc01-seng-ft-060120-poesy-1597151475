@@ -2,10 +2,13 @@ import React from "react";
 
 class NewPoemForm extends React.Component {
   render() {
-    let { handleFormChange } = this.props
+    let { handleFormChange, handleFormSubmit } = this.props
     let { title, author, content } = this.props.formData
     return (
-      <form className="new-poem-form">
+      <form 
+          className="new-poem-form" 
+          onSubmit={handleFormSubmit} 
+      >
         <input 
             placeholder="Title"
             name="title"

@@ -27,7 +27,13 @@ class App extends React.Component {
     this.setState({ formData: newFormData })
   } 
 
+  handleFormSubmit = (e) => {
+    e.preventDefault()
+    let { formData } = this.state
+    fetcher(poemsUrl, this.inStateNewPoem, {method: "POST", body: formData})
+  }
 
+  inStateNewPoem = newPoem => this.setState({ poems: [ ...this.state.poems ].concat( newPoem ) })
 
   render() {
     let { poems, showForm, formData } = this.state
@@ -37,7 +43,7 @@ class App extends React.Component {
           <button
               onClick={this.handleShowFormClick}
           >Show/hide new poem form</button>
-          {showForm && <NewPoemForm formData={formData} handleFormChange={this.handleFormChange}/>}
+          {showForm && <NewPoemForm formData={formData} handleFormChange={this.handleFormChange} handleFormSubmit={this.handleFormSubmit}/>}
         </div>
         <PoemsContainer 
             poems={poems}

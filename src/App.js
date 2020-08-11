@@ -31,7 +31,7 @@ class App extends React.Component {
 
   handleSubmit = (poem) => {
     this.setState({ poems: [...this.state.poems, poem] })
-    
+
     fetch(baseURL, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
@@ -46,6 +46,12 @@ class App extends React.Component {
       poem.read = true;
     }
     this.forceUpdate();
+
+    fetch(baseURL + poem.id, {
+      method: 'PATCH',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(poem)
+    })
   }
 
   render() {

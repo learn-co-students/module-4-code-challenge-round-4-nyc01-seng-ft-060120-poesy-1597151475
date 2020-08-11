@@ -42,7 +42,7 @@ class NewPoemForm extends React.Component {
         <input placeholder="Title" name="title" value={this.state.title} onChange={this.handleChange}/>
         <input placeholder="Author" name="author" value={this.state.author} onChange={this.handleChange}/>
         <textarea placeholder="Write your masterpiece here..." rows={10} name="content" value={this.state.content} onChange={this.handleChange}/>
-        <input type="submit" value="Share your masterpiece" />
+        <input className="ui green button" type="submit" value="Share your masterpiece" />
       </form>
     );
   }

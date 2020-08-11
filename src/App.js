@@ -9,7 +9,8 @@ const API = "http://localhost:6001/poems"
 class App extends React.Component {
   state = {
     poems: [],
-    showForm: false
+    showForm: false,
+    showFaves: false
   }
 
   componentDidMount(){
@@ -18,8 +19,12 @@ class App extends React.Component {
     .then(poemsObjects => this.setState({poems: poemsObjects}, () => console.log(this.state.poems)))
   }
 
-  handleClick = () => {
+  handleClickForm = () => {
     this.setState({showForm: !this.state.showForm})
+  }
+
+  handleClickFaves = () => {
+    this.setState({showFaves: !this.state.showFaves})
   }
 
   handleNewPoem = (newPoem) => {
@@ -44,17 +49,19 @@ class App extends React.Component {
 
   render() {
     console.log(this.state.poems)
-    return (
+    return (  
       <div className="app">
         <div className="sidebar">
-          <button className="ui blue button" onClick={this.handleClick}>Show/hide new poem form</button>
+          <button className="ui blue button" onClick={this.handleClickForm}>Show/Hide New Poem Form</button>
           {this.state.showForm
           ? <NewPoemForm handleNewPoem={this.handleNewPoem} />
-          : null 
-          }
+          : null }
+          <br></br><br></br>
           {/* {false && <NewPoemForm />} */}
-        </div>
-        <div>
+          <button className="ui blue button" onClick={this.handleClickFaves}>Show/Hide My Favorite Poems</button>
+          {this.state.showFaves
+          ? <FavoritesContainer /> 
+          : null }
         </div>
         <PoemsContainer poems={this.state.poems} handleDelete={this.handleDelete}/>
       </div>

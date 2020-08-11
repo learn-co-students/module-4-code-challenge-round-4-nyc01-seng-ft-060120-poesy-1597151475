@@ -5,9 +5,12 @@ class Poem extends React.Component {
   markHandler = (e) => { 
     e.target.innerHTML = "Mark as unread"
   }
+
+  deleteHandler = (e) => {
+    this.props.deleteHandler(this.props.poem)
+  }
   
   render() {
-    console.log(this.props)
     return (
       <div>
         <h3> {this.props.poem.title}</h3>
@@ -16,6 +19,7 @@ class Poem extends React.Component {
           <strong>{this.props.poem.author}</strong>
         </p>
         <button onClick={this.markHandler} >Mark as read</button>
+        <button onClick={this.deleteHandler}>Delete Poems</button>
       </div>
     );
   }

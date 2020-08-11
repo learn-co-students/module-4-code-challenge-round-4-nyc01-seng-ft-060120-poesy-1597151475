@@ -1,18 +1,16 @@
 import React from "react";
 
-class Poem extends React.Component {
-  render() {
-    return (
-      <div>
-        <h3>Title</h3>
-        <p>Content</p>
-        <p>
-          <strong>- By Author</strong>
+
+function Poem({ title, content, author }) {
+  return (
+    <div>
+      <h3>{ title }</h3>
+      <p>{ content }</p>
+      <p>
+        <strong>- By { author }</strong>
         </p>
         <button>Mark as read</button>
-      </div>
-    );
-  }
+    </div>
+  )
 }
-
 export default Poem;

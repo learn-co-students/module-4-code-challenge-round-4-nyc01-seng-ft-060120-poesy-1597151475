@@ -35,6 +35,13 @@ class App extends React.Component {
 
   inStateNewPoem = newPoem => this.setState({ poems: [ ...this.state.poems ].concat( newPoem ) })
 
+  handleFavoriteClick = (id) => {
+      // fetcher(`${baseUrl}/${id}`, console.log, { met})
+  }
+
+  handleUnfavoriteClick = (id) => {
+    console.log(id);
+  }
   render() {
     let { poems, showForm, formData } = this.state
     return (
@@ -45,9 +52,17 @@ class App extends React.Component {
           >Show/hide new poem form</button>
           {showForm && <NewPoemForm formData={formData} handleFormChange={this.handleFormChange} handleFormSubmit={this.handleFormSubmit}/>}
         </div>
-        <PoemsContainer 
+        <PoemsContainer
+            title="Poems" 
             poems={poems}
+            handleFavoriteClick={this.handleFavoriteClick}
         />
+        <PoemsContainer
+            title="Favorites" 
+            poems={[]}
+            handleUnfavoriteClick={this.handleUnfavoriteClick}
+        />
+
       </div>
     );
   }

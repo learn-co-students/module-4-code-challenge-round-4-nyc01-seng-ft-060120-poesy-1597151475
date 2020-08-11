@@ -11,7 +11,8 @@ class Poem extends React.Component {
   handleClick = () => this.setState({ buttonValue: this.state[this.state.buttonValue]})
 
   render() {
-    let { author, content, title } = this.props.poem
+    let { handleFavoriteClick } = this.props
+    let {id, author, content, title } = this.props.poem
     let { buttonValue } = this.state
     return (
       <div>
@@ -23,6 +24,10 @@ class Poem extends React.Component {
         <button
             onClick={this.handleClick}
         >{buttonValue}</button>
+        <p></p>
+        <button
+            onClick={() => handleFavoriteClick(id)}
+        >{"favorite"}</button>
       </div>
     );
   }

@@ -8,8 +8,8 @@
     "react-scripts": "3.2.0"
   },
   "scripts": {
-    "start-backend": "json-server --watch db.json -p 6001 & open http://localhost:6001/poems",
-    "start": "react-scripts start && fg",
+    "backend": "json-server --watch db.json -p 6001 & open http://localhost:6001/poems",
+    "start": "react-scripts start && fg && npm run backend",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

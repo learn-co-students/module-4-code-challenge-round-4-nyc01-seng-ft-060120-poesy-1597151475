@@ -10,8 +10,6 @@ class Poem extends React.Component {
 
   handleClick = () => this.setState({ buttonValue: this.state[this.state.buttonValue]})
 
-
-
   render() {
     let { author, content, title } = this.props.poem
     let { buttonValue } = this.state

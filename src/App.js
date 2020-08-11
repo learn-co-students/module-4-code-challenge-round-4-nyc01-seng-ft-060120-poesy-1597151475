@@ -35,7 +35,6 @@ class App extends React.Component {
 
   inStateNewPoem = newPoem => this.setState({ poems: [ ...this.state.poems ].concat( newPoem ) })
 
-
   render() {
     let { poems, showForm, formData } = this.state
     return (

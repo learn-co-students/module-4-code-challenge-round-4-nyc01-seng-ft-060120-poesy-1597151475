@@ -10,6 +10,7 @@ class App extends React.Component {
   state = {
     showForm: false,
     poems: [],
+    favorites: [],
     title: "",
     author: "",
     content: "",
@@ -77,8 +78,15 @@ class App extends React.Component {
     this.setState({ poems: newPoems})
   }
 
+  favorite = (poem) => {
+    let newFavorites = [poem, ...this.state.favorites]
+    this.setState({
+      favorites: newFavorites
+    })
+  }
+
   render() {
-    // console.log(this.state.poems)
+    console.log(this.state.favorites)
     return (
       <div className="app">
         <div className="sidebar">
@@ -87,7 +95,7 @@ class App extends React.Component {
           title={this.state.title} author={this.state.author} content={this.state.content}
           addPoem={this.addPoem} />}
         </div>
-        <PoemsContainer deletePoem={this.deletePoem} poems={this.state.poems} />
+        <PoemsContainer favorite={this.favorite} deletePoem={this.deletePoem} poems={this.state.poems} />
       </div>
     );
   }

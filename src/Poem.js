@@ -33,6 +33,7 @@ class Poem extends React.Component {
           <strong>- By {this.props.poem.author}</strong>
         </p>
     <button onClick={this.readUnread} >{this.state.buttonText}</button>
+    <button onClick={() => this.props.favorite(this.props.poem)} >Favorite</button>
     <button onClick={() => this.props.deletePoem(this.props.poem)} >Delete Poem</button>
 
       </div>

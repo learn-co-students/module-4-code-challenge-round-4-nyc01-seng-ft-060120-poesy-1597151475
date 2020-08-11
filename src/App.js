@@ -53,7 +53,7 @@ class App extends React.Component {
 
   deletePoem = (e) => {
     let id = e.target.id
-    fetch(`http://localhost:6001/poems/${id}`)
+    // fetch(`http://localhost:6001/poems/${id}`)
   }
 
 

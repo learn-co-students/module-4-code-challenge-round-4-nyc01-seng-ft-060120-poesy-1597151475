@@ -3,15 +3,37 @@ import "./App.css";
 import PoemsContainer from "./PoemsContainer";
 import NewPoemForm from "./NewPoemForm";
 
+const POEMS_API = 'http://localhost:6001/poems'
+
 class App extends React.Component {
+
+  state = {
+    poems: [],
+    clicked: false
+  }
+
+  componentDidMount() {
+    fetch(POEMS_API)
+    .then(resp => resp.json())
+    .then(poems => this.setState({poems}))
+  }
+
+  toggleFormClicked = () => {
+    this.setState({ clicked: !this.state.clicked })
+  }
+
+  addNewPoem = (response) => {
+    this.setState({poems: [response, ...this.state.poems]})
+  }
+
   render() {
     return (
       <div className="app">
         <div className="sidebar">
-          <button>Show/hide new poem form</button>
-          {false && <NewPoemForm />}
+          <button onClick={this.toggleFormClicked}>Show/hide new poem form</button>
+          {this.state.clicked ? <NewPoemForm addNewPoem={this.addNewPoem} toggleFormClicked={this.toggleFormClicked}/>: null}
         </div>
-        <PoemsContainer />
+        <PoemsContainer poems={this.state.poems}/>
       </div>
     );
   }

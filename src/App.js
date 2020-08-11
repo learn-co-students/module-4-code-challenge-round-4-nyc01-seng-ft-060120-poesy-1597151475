@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import PoemsContainer from "./PoemsContainer";
 import NewPoemForm from "./NewPoemForm";
+import Favorites from './Favorites'
 
 class App extends React.Component {
 
@@ -9,7 +10,8 @@ class App extends React.Component {
     super()
     this.state = {
       isHidden: true,
-      poems: []
+      poems: [],
+      favorites: []
     }
   }
 
@@ -42,6 +44,13 @@ class App extends React.Component {
     this.setState({poems: newArray})
   }
 
+  favoritePoem = (id) => {
+    let poemToFind = this.state.poems.find(poem => poem.id == id)
+    let newArray = [poemToFind,...this.state.favorites]
+    this.setState({favorites: newArray})
+
+  }
+
 
 
 
@@ -52,7 +61,8 @@ class App extends React.Component {
           <button onClick = {this.toggleHidden.bind(this)}>Show/hide new poem form</button>
           {!this.state.isHidden && <NewPoemForm formSubmitHandler={this.formSubmitHandler}/>}
         </div>
-        <PoemsContainer poems={this.state.poems}/>
+        <PoemsContainer favoritePoem={this.favoritePoem} poems={this.state.poems}/>
+        <Favorites favorites={this.state.favorites}/>
       </div>
     );
   }

@@ -4,7 +4,7 @@ import Poem from "./Poem";
 class PoemsContainer extends React.Component {
 
   renderPoems = (poems) => {
-    return this.props.poems.map((poem, index) => <Poem key={index} poem={poem}/>)
+    return this.props.poems.map((poem, index) => <Poem faveHandler={this.props.faveHandler} key={index} poem={poem}/>)
   }
   render() {
     return (

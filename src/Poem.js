@@ -16,6 +16,7 @@ class Poem extends React.Component {
           <strong>- {this.props.poem.author}</strong>
         </p>
         <button onClick={(e) => this.clickHandler(e)}>{this.state.toggle ? 'Read' : 'Unread' }</button>
+        <button onClick={(e) => this.props.faveHandler(e, this.props.poem.id)}>Add to Favorites</button>
       </div>
     );
   }

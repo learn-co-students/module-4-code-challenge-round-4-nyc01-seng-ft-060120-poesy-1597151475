@@ -20,6 +20,25 @@ class App extends React.Component {
 
   handleSubmit = (poem) => {
     this.setState({ poems: [...this.state.poems, poem] })
+    fetch(baseURL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        accepts: 'application/json'
+      },
+      body: JSON.stringify(poem)
+    }).then(() => {
+      console.log("Success.");
+    })
+  }
+
+  markRead = (poem) => {
+    if ('read' in poem) {
+      poem.read = !poem.read;
+    } else {
+      poem.read = true;
+    }
+    this.forceUpdate();
   }
 
   render() {
@@ -31,7 +50,7 @@ class App extends React.Component {
           {this.state.showForm && <NewPoemForm handleSubmit = { this.handleSubmit } />}
 
         </div>
-        <PoemsContainer poems = { this.state.poems } />
+        <PoemsContainer poems = { this.state.poems } markRead = { this.markRead }/>
       </div>
     );
   }

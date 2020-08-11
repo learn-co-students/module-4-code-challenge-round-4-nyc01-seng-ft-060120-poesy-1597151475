@@ -1,15 +1,15 @@
 import React from "react";
 
 
-function Poem({ title, content, author }) {
+function Poem (props) {
   return (
     <div>
-      <h3>{ title }</h3>
-      <p>{ content }</p>
+      <h3>{ props.poem.title }</h3>
+      <p>{ props.poem.content }</p>
       <p>
-        <strong>- By { author }</strong>
+        <strong>- By { props.poem.author }</strong>
         </p>
-        <button>Mark as read</button>
+      <button onClick = { () => { props.markRead(props.poem) } } >Mark as {props.poem.read ? "unread" : "read"}</button>
     </div>
   )
 }

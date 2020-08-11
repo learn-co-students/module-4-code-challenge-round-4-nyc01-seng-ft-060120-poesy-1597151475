@@ -15,6 +15,11 @@ class NewPoemForm extends React.Component {
   submitHandler = (e) => {
     e.preventDefault()
     this.props.formSubmitHandler(this.state)
+    this.setState({
+    title: '',
+    author: '',
+    content: ''
+    })
   }
 
   render() {

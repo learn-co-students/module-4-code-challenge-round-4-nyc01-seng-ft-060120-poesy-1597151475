@@ -1,8 +1,20 @@
 import React from "react";
 
 class Poem extends React.Component {
+
+  state = {
+    "Mark as Read": "Read",
+    "Read": "Mark as Read",
+    buttonValue: "Mark as Read"
+  }
+
+  handleClick = () => this.setState({ buttonValue: this.state[this.state.buttonValue]})
+
+
+
   render() {
-    let { id, author, content, title } = this.props.poem
+    let { author, content, title } = this.props.poem
+    let { buttonValue } = this.state
     return (
       <div>
         <h3>{title}</h3>
@@ -10,7 +22,9 @@ class Poem extends React.Component {
         <p>
           <strong>{author}</strong>
         </p>
-        <button>Mark as read</button>
+        <button
+            onClick={this.handleClick}
+        >{buttonValue}</button>
       </div>
     );
   }

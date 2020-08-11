@@ -25,7 +25,7 @@ class App extends React.Component {
     let newFormData = {...this.state.formData}
     newFormData[t.name] = t.value
     this.setState({ formData: newFormData })
-  } 
+  }
 
   handleFormSubmit = (e) => {
     e.preventDefault()
@@ -34,6 +34,7 @@ class App extends React.Component {
   }
 
   inStateNewPoem = newPoem => this.setState({ poems: [ ...this.state.poems ].concat( newPoem ) })
+
 
   render() {
     let { poems, showForm, formData } = this.state

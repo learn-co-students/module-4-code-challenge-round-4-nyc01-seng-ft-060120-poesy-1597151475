@@ -1,15 +1,24 @@
 import React from "react";
 
 class Poem extends React.Component {
+
+  state = {
+    read: false
+  }
+
+  clickHandler = (e) => {
+    e.target.innerText = "Mark as unread"
+  }
   render() {
+    let poem = this.props.poem
     return (
       <div>
-        <h3>Title</h3>
-        <p>Content</p>
+        <h3>{poem.title}</h3>
+        <p>{poem.content}</p>
         <p>
-          <strong>- By Author</strong>
+          <strong>- By {poem.author}</strong>
         </p>
-        <button>Mark as read</button>
+        <button onClick={this.clickHandler}>Mark as read</button>
       </div>
     );
   }

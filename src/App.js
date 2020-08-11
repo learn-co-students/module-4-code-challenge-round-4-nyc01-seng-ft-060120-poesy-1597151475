@@ -15,7 +15,29 @@ class App extends React.Component {
       return {
         display: !previousState.display
       }
-    }, () => console.log(this.state.display))
+    })
+  }
+
+  newPoemSubmitHandler = (obj) => {
+    fetch('http://localhost:6001/poems', {
+      method: "POST",
+      headers: {
+        "accepts": "application/json",
+        "content-type": "application/json"
+      },
+      body: JSON.stringify({
+        title: obj.title,
+        author: obj.author,
+        content: obj.content
+      })
+    })
+    .then(response => response.json())
+    .then(poemObj => {
+      let newPoemsArray = [...this.state.poems, poemObj]
+      this.setState({
+        poems: newPoemsArray
+      })
+    })
   }
 
   componentDidMount(){
@@ -33,7 +55,7 @@ class App extends React.Component {
       <div className="app">
         <div className="sidebar">
           <button onClick={this.handleFormClick}>Show/hide new poem form</button>
-          {this.state.display && <NewPoemForm />}
+          {this.state.display && <NewPoemForm newPoemSubmitHandler={this.newPoemSubmitHandler}/>}
         </div>
         <PoemsContainer poems={this.state.poems}/>
       </div>

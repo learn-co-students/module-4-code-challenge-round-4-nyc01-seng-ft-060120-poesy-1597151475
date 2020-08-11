@@ -1,5 +1,5 @@
 import React from "react";
-import Poem from "./Poem";
+import Poem from "../Components/Poem";
 
 class PoemsContainer extends React.Component {
   render() {

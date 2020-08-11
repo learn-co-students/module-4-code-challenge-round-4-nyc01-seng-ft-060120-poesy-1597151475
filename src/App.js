@@ -1,8 +1,8 @@
 import React from "react";
 import "./App.css";
-import PoemsContainer from "./PoemsContainer";
-import NewPoemForm from "./NewPoemForm";
-import Favorites from './FavoritesContainer'
+import PoemsContainer from "./Containers/PoemsContainer";
+import NewPoemForm from "./Components/NewPoemForm";
+import Favorites from './Containers/FavoritesContainer'
 
 let baseUrl = "http://localhost:6001/poems"
 
@@ -12,7 +12,8 @@ class App extends React.Component {
   state = {
     showForm: false,
     poems: [],
-    favorites: []
+    favorites: [],
+    search: ""
   }
 
   formToggle = () => {
@@ -67,6 +68,14 @@ class App extends React.Component {
     .then(resp => resp.json())
     }
 
+    searchHandler = (obj) => {
+        this.setState({search: obj})
+      }
+
+    filterFavorites = () => {
+      return this.state.favorites.filter(a => a.title.includes(this.state.search))
+    }
+
   render() {
     return (
       <div className="app">
@@ -75,7 +84,7 @@ class App extends React.Component {
               this.formToggle()
             }}>Show/hide new poem form</button>
           {this.state.showForm ? <NewPoemForm submitHandler={this.submitHandler}/> : null}
-                  <Favorites poems={this.state.favorites} readButtonHandler={this.readButtonHandler}/> 
+                  <Favorites poems={this.filterFavorites()} readButtonHandler={this.readButtonHandler} searchHandler={this.searchHandler}/> 
 
         </div>
         <PoemsContainer poems={this.state.poems} readButtonHandler={this.readButtonHandler} deleteButtonHandler={this.deleteButtonHandler}/>

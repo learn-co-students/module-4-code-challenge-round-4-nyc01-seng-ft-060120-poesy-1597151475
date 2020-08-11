@@ -1,7 +1,21 @@
 import React from "react";
 
 class Poem extends React.Component {
-	render() {
+  state = {
+    buttonContent: "Mark as read"
+  }
+  
+  
+  clickHandler = () => {
+    if(this.state.buttonContent === "Mark as read"){
+      // console.log(this.state.buttonContent)
+      this.setState({buttonContent: "Mark as Unread"})
+    } else {
+      this.setState({buttonContent: "Mark as read"})
+    }
+  }
+  
+  render() {
 		// console.log(this.props.poem)
 		return (
 			<div>
@@ -10,7 +24,7 @@ class Poem extends React.Component {
 				<p>
 					<strong>-{this.props.poem.author}</strong>
 				</p>
-				<button>Mark as read</button>
+    <button onClick={this.clickHandler}>{this.state.buttonContent}</button>
 			</div>
 		);
 	}

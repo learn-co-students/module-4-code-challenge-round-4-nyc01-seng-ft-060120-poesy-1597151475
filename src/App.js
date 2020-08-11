@@ -31,7 +31,7 @@ class App extends React.Component {
     this.setState({showPoem: !this.state.showPoem})
   }
 
-  faveHandler = async (e, poemId) => {
+  faveHandler = async (poemId) => {
     e.preventDefault()
     await this.setState({ favoritesIds: [...this.state.favoritesIds, poemId] });
   }

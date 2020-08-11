@@ -53,10 +53,26 @@ class App extends React.Component {
 
   deletePoem = (e) => {
     let id = e.target.id
-    // fetch(`http://localhost:6001/poems/${id}`)
+    let obj = this.state.poems.find(poem => poem.id == id)
+    console.log(obj, id)
+    fetch(`http://localhost:6001/poems/${id}`,{
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(obj)
+    })
+    .then(response => response.json())
+    .then(response => this.fetchPoems())
+
   }
 
-
+  fetchPoems = () => {
+    fetch('http://localhost:6001/poems')
+    .then(response => response.json())
+    .then(response => this.setState({poems: response}))
+  }
 
 
   render() {

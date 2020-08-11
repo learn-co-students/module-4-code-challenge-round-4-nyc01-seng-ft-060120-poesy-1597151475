@@ -21,6 +21,10 @@ class App extends React.Component {
     this.setState({showForm: !this.state.showForm})
   }
 
+  handleNewPoem = (newPoem) => {
+    this.setState({poems: [...this.state.poems, newPoem]})
+  }
+
   render() {
     console.log(this.state.poems)
     return (
@@ -28,10 +32,10 @@ class App extends React.Component {
         <div className="sidebar">
           <button onClick={this.handleClick}>Show/hide new poem form</button>
           {this.state.showForm
-          ? <NewPoemForm />
+          ? <NewPoemForm handleNewPoem={this.handleNewPoem} />
           : null 
           }
-          {false && <NewPoemForm />}
+          {/* {false && <NewPoemForm />} */}
         </div>
         <PoemsContainer poems={this.state.poems}/>
       </div>

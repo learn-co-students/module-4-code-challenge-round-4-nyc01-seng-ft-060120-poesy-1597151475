@@ -52,14 +52,29 @@ class App extends React.Component {
     })
   }
 
-  favoritesClickHandler = (obj) => {
-    if (!this.state.favorites.includes(obj)) {   
-      let newFavorites = [...this.state.favorites, obj]
-      this.setState({
-        favorites: newFavorites
-      })
-    }
+  favoritesClickHandler = (e, obj) => {
+    e.target.textContent === "Add to Favorites" ? 
+      this.setState(previousState => {return {
+        favorites: [...previousState.favorites, obj]}
+      }) 
+    : 
+      this.setState(previousState => {return {
+        favorites: previousState.favorites.filter(favorite => favorite.id !== obj.id)}
+    })
   }
+
+    // !this.state.favorites.includes(obj) && this.setState(previousState => {
+    //   return {
+    //     favorites: [...previousState.favorites, obj]
+    //   }}
+    // )
+
+    // if (!this.state.favorites.includes(obj)) {   
+    //   let newFavorites = [...this.state.favorites, obj]
+    //   this.setState({
+    //     favorites: newFavorites
+    //   })
+    // }
 
   deleteHandler = (obj) => {
     fetch(`http://localhost:6001/poems/${obj.id}`, {

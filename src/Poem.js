@@ -3,7 +3,8 @@ import React from "react";
 class Poem extends React.Component {
 
   state = {
-    read: false
+    read: false,
+    favorite: false
   }
 
   clickHandler = () => {
@@ -14,12 +15,16 @@ class Poem extends React.Component {
     })
   }
 
-  favoritesClickHandler = () => {
-    this.props.favoritesClickHandler(this.props.poem)
+  favoritesClickHandler = (e) => {
+    this.props.favoritesClickHandler(e, this.props.poem)
+    this.setState(previousState => {
+      return {
+        favorite: !previousState.favorite
+      }
+    })
   }
 
-  deleteClickHandler = (e) => {
-    e.preventDefault()
+  deleteClickHandler = () => {
     this.props.deleteHandler(this.props.poem)
   }
 
@@ -35,7 +40,7 @@ class Poem extends React.Component {
           {this.state.read ? "Mark as unread" : "Mark as read" }
         </button>
         <button onClick={this.favoritesClickHandler}>
-          Add to Favorites
+          {this.state.favorite ? "Remove from Favorites" : "Add to Favorites" }
         </button>
         <button onClick={this.deleteClickHandler}>
           Delete Poem

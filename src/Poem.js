@@ -6,7 +6,6 @@ class Poem extends React.Component {
     reddIt: false
   }
 
-
   readBtn = () => {
     this.setState({
       reddIt: !this.state.reddIt
@@ -22,7 +21,8 @@ class Poem extends React.Component {
         <p>
           <strong>- {this.props.poem.author}</strong>
         </p>
-        <button onClick={this.readBtn}>{this.state.reddIt ? 'Mark as read' : 'Mark as unread'} </button>
+        <button onClick={this.readBtn}>{this.state.reddIt ? 'Mark as read' : 'Mark as unread'} </button><br></br>
+        <button id={this.props.poem.id} onClick={this.props.deletePoem} >Delete</button>
       </div>
     );
   }

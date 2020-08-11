@@ -9,15 +9,33 @@ class App extends React.Component {
   state = {
 
     poemsArray: [],
-    display: false // to toggle between hiding and showing form
+    display: false // to toggle between hiding and showing form?
   }
 
   hideClick = () => {
-    //something to hide form, so pass this in as props to form
+    let newDisplay = !this.state.display
   }
 
   submitHandler = (obj) => {
-    // will need a POST method to update the db with the obj i created on the form
+    fetch("http:localhost:6001/poems", {
+      method: "POST",
+      headers: {
+        "accept": "application/json",
+        "content-type": "application/json"
+      },
+      body: JSON.stringify ({
+        title: obj.title,
+        content: obj.content,
+        author: obj.author
+      })
+    })
+    .then(resp => resp.json())
+    .then(obj => {
+      let newPoems = [...this.state.poemsArray, obj]
+      this.setState({
+        poems: newPoems
+      })
+    })
   }
 
 
@@ -40,7 +58,7 @@ class App extends React.Component {
       <div className="app">
         <div className="sidebar">
           <button>Show/hide new poem form</button>
-          {false && <NewPoemForm />}
+          {false && <NewPoemForm submitHandler={this.submitHandler}/>}
         </div>
         <PoemsContainer poems={this.state.poemsArray} />
       </div>

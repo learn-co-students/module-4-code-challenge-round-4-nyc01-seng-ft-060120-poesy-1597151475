@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import PoemsContainer from "./PoemsContainer";
 import NewPoemForm from "./NewPoemForm";
+import FavoritesContainer from "./FavoritesContainer";
 
 const API = "http://localhost:6001/poems"
 
@@ -46,12 +47,14 @@ class App extends React.Component {
     return (
       <div className="app">
         <div className="sidebar">
-          <button onClick={this.handleClick}>Show/hide new poem form</button>
+          <button className="ui blue button" onClick={this.handleClick}>Show/hide new poem form</button>
           {this.state.showForm
           ? <NewPoemForm handleNewPoem={this.handleNewPoem} />
           : null 
           }
           {/* {false && <NewPoemForm />} */}
+        </div>
+        <div>
         </div>
         <PoemsContainer poems={this.state.poems} handleDelete={this.handleDelete}/>
       </div>

@@ -45,7 +45,7 @@
 As a user:
 
 1. I can add a poem to my favourites and see it on a separate list.
-2. I can delete a poem and they are still gone when I refresh the page.
+<!-- 2. I can delete a poem and they are still gone when I refresh the page. -->
 
 <!-- ## Rubric -->
 

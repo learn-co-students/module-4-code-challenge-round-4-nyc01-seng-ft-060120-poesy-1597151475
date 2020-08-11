@@ -1,6 +1,20 @@
 import React from "react";
 
 class NewPoemForm extends React.Component {
+
+  state = {
+    title: "",
+    content: "",
+    author: ""
+  }
+
+  changeHandler = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  }
+
+
   render() {
     return (
       <form className="new-poem-form">

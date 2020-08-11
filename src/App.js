@@ -3,6 +3,7 @@ import "./App.css";
 import PoemsContainer from "./PoemsContainer";
 import NewPoemForm from "./NewPoemForm";
 
+let poemsUrl = `http://localhost:6001/poems/`;
 class App extends React.Component {
 
   state = {
@@ -11,7 +12,17 @@ class App extends React.Component {
   }
 
   addPoem = (poem) => {
-    this.setState({poems: [...this.state.poems, poem]})
+    fetch(poemsUrl, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        accepts: "application/json",
+      },
+      body: JSON.stringify(poem),
+    })
+      .then((resp) => resp.json())
+      .then((data) => this.setState({ poems: [...this.state.poems, data] }));
+    
   }
 
   formHandler = (e) => {
@@ -20,7 +31,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`http://localhost:6001/poems/`)
+    fetch(poemsUrl)
       .then((resp) => resp.json())
       .then((data) => this.setState({poems: data}, () => console.log(this.state)))
   }

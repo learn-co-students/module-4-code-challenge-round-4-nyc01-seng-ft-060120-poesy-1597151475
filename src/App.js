@@ -54,8 +54,12 @@ class App extends React.Component {
     fetch(`${baseUrl}/${id}`, {
       method: "DELETE" 
     })
-    .then(res => res.json()) 
-    .then(json => this.setState({poems: json})) 
+    .then(res => {
+      const newPoems = this.state.poems.filter(poem => poem.id !== id) 
+      this.setState({
+        poems: newPoems 
+      })
+    })
   }
 
   render() {

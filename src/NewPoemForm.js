@@ -21,11 +21,11 @@ class NewPoemForm extends React.Component {
         "Content-Type": "application/json",
         Accept: "application/json"
       },
-      body: JSON.stringify(
-        title: this.state.title,
-        content: this.state.content,
-        author: this.state.author
-      }
+      body: JSON.stringify(this.state)})
+        // title: this.state.title,
+        // content: this.state.content,
+        // author: this.state.author
+      // })
       .then(r => r.json())
       .then(newPoem => this.props.handleNewPoem(newPoem),
         this.setState({
@@ -33,8 +33,8 @@ class NewPoemForm extends React.Component {
           content: "",
           author: ""
         }))
-    })
-  }
+    }
+  
 
   render() {
     return (

@@ -25,6 +25,19 @@ class App extends React.Component {
     this.setState({poems: [...this.state.poems, newPoem]})
   }
 
+  handleDelete = (id) => {
+    fetch(`http://localhost:6001/poems/${id}`, { 
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      }
+    }
+    .then(r => r.json())
+    .then(
+      
+    )
+
   render() {
     console.log(this.state.poems)
     return (

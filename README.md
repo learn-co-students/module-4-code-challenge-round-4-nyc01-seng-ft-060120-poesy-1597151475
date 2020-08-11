@@ -36,17 +36,17 @@
 <!-- 3. I can create poems and they are still there when I refresh the page. -->
 <!-- 4. I can mark poems as read which will change the text of that button to "Mark as unread". -->
 
-## Advanced Deliverables
+<!-- ## Advanced Deliverables -->
 
-These deliverables are not required to pass the code challenge, but if you have the extra time, or even after the code challenge, they are a great way to stretch your skills.
+<!-- These deliverables are not required to pass the code challenge, but if you have the extra time, or even after the code challenge, they are a great way to stretch your skills. -->
 
-> Note: If you are going to attempt these advanced deliverables, please be sure to have a working commit with all the Core Deliverables first!
+<!-- > Note: If you are going to attempt these advanced deliverables, please be sure to have a working commit with all the Core Deliverables first! -->
 
 As a user:
 
 1. I can add a poem to my favourites and see it on a separate list.
 2. I can delete a poem and they are still gone when I refresh the page.
 
-## Rubric
+<!-- ## Rubric -->
 
-You can find the rubric for this assessment [here](https://github.com/learn-co-curriculum/se-rubrics/blob/master/module-4.md).
+<!-- You can find the rubric for this assessment [here](https://github.com/learn-co-curriculum/se-rubrics/blob/master/module-4.md). -->

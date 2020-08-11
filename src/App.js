@@ -10,24 +10,34 @@ class App extends React.Component {
 
   state = {
     poems: [],
-    showForm: false
+    showForm: false,
+    formData: {title: "", author: "", content: ""}
   }
 
   componentDidMount() { fetcher(poemsUrl, this.inStatePoems ) }
 
   inStatePoems = (data) => this.setState({poems: data})
 
-  handleShowFormClick = () => {
-    console.log("form click");
-  }
+  handleShowFormClick = () => this.setState({showForm: !this.state.showForm})
+
+  handleFormChange = e => {
+    let t = e.target 
+    let newFormData = {...this.state.formData}
+    newFormData[t.name] = t.value
+    this.setState({ formData: newFormData })
+  } 
+
+
 
   render() {
-    let { poems, showForm } = this.state
+    let { poems, showForm, formData } = this.state
     return (
       <div className="app">
         <div className="sidebar">
-          <button>Show/hide new poem form</button>
-          {showForm && <NewPoemForm />}
+          <button
+              onClick={this.handleShowFormClick}
+          >Show/hide new poem form</button>
+          {showForm && <NewPoemForm formData={formData} handleFormChange={this.handleFormChange}/>}
         </div>
         <PoemsContainer 
             poems={poems}

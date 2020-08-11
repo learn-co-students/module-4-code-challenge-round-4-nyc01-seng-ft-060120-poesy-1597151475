@@ -4,12 +4,9 @@ import Poem from "./Poem";
 class PoemsContainer extends React.Component {
   render() {
     let { poems } = this.props
-    console.log(poems);
     return (
       <div className="poems-container">
-        {
-            poems.map( p => <Poem key={p.key} poem={p}/> )
-        }
+        { poems.map( p => <Poem key={p.key} poem={p}/> ) }
       </div>
     );
   }

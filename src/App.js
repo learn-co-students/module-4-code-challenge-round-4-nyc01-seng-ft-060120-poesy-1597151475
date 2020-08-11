@@ -32,11 +32,14 @@ class App extends React.Component {
         "Content-Type": "application/json",
         Accept: "application/json"
       }
-    }
+    })
     .then(r => r.json())
-    .then(
-      
-    )
+    .then(() => {
+      let newArr = this.state.poems.filter(poem => poem.id !== id)
+      this.setState({poems: newArr})
+    })
+  }
+  
 
   render() {
     console.log(this.state.poems)
@@ -50,7 +53,7 @@ class App extends React.Component {
           }
           {/* {false && <NewPoemForm />} */}
         </div>
-        <PoemsContainer poems={this.state.poems}/>
+        <PoemsContainer poems={this.state.poems} handleDelete={this.handleDelete}/>
       </div>
     );
   }

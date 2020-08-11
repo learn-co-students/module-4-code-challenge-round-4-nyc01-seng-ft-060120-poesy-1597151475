@@ -23,7 +23,7 @@ class Poem extends React.Component {
           ? <button className="ui yellow button" onClick={this.toggleRead}>Mark as Unread</button>
           : <button className="ui blue button" onClick={this.toggleRead}>Mark as read</button>}
           <br></br><br></br>
-          <button className="ui red button" onClick={this.props.handleDelete(this.props.poem.id)}>Delete</button>
+          <button className="ui red button" onClick={() => this.props.handleDelete(this.props.poem.id)}>Delete</button>
         </p>
         {/* <button onClick={this.toggleRead}>Mark as read</button> */}
       </div>

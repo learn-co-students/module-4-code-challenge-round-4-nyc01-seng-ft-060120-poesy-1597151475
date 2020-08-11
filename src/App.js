@@ -8,7 +8,8 @@ const API = "http://localhost:6001/poems"
 class App extends React.Component {
 
   state = {
-    poemArray: []
+    poemArray: [],
+    showForm: false 
   }
 
   fetchPoems = () => {
@@ -48,12 +49,17 @@ class App extends React.Component {
     .then(data => this.fetchPoems())
   }
 
+  formButton = () => {
+    let newState = !this.state.showForm
+    this.setState({ showForm:newState })
+  }
+
   render() {
     return (
       <div className="app">
         <div className="sidebar">
-          <button>Show/hide new poem form</button>
-          {true && <NewPoemForm submitHandler={this.submitHandler} />}
+          <button onClick={this.formButton}>Show/hide new poem form</button>
+          {this.state.showForm && <NewPoemForm submitHandler={this.submitHandler} />}
         </div>
         <PoemsContainer poemsArray={this.state.poemArray} boolHandler={this.boolHandler} />
       </div>

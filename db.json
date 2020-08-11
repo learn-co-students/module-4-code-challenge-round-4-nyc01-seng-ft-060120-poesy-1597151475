@@ -29,11 +29,11 @@
       "read": false
     },
     {
-      "title": "Love Galore",
-      "author": "Sza",
-      "content": "As long as we got love",
-      "id": 5,
-      "read": false
+      "title": "Still Here",
+      "author": "Sarah Kay",
+      "content": "They can give us all they got\nBut they won’t destroy us not as long as I’m still here\nI’ve walked these shoes until they’re thin\nI’ve wandered halfway round the world and wandered back again\nThe road is long the night is cold when I’m out there on my own\nYour face lit by the hallway lamp is how I know I’m home\nStill here, still here",
+      "read": true,
+      "id": 5
     }
   ]
 }

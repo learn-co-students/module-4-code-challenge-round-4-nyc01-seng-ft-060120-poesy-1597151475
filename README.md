@@ -40,7 +40,7 @@ for last
 √3. I can create poems and they are still there when I refresh the page.
 
 
-4. I can mark poems as read which will change the text of that button to "Mark as unread".
+√4. I can mark poems as read which will change the text of that button to "Mark as unread".
 
 ## Advanced Deliverables
 

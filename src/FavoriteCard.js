@@ -4,6 +4,7 @@ const FavoriteCard = (props) =>{
     e.preventDefault();
     props.removeFavorite(poemId)
   };
+
     return (
       <div>
         <h3>{props.poem.title}</h3>
@@ -11,7 +12,7 @@ const FavoriteCard = (props) =>{
         <p>
           <strong>- {props.poem.author}</strong>
         </p>
-        <button onClick={(e) => clickHandler(e, props.poem.id)}>
+        <button onClick={(e) => clickHandler(props.poem.id)}>
           Remove From Favorites
         </button>
       </div>

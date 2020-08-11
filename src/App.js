@@ -49,7 +49,18 @@ class App extends React.Component {
   componentDidMount() {
     fetch(poemsUrl)
       .then((resp) => resp.json())
-      .then((data) => this.setState({poems: data}, () => console.log(this.state)))
+      .then((data) => this.setState({poems: data}))
+  }
+
+  deletePoem = (epoemId) => {
+    fetch(poemsUrl + poemId, {
+      method: "DELETE",
+      headers: {
+        "content-type": "application/json",
+        accepts: "application/json",
+      },
+    }).then(resp=>resp.json())
+    .then(this.setState({poems: this.state.poems.filter(poem=> poem.id !== poemId)}))
   }
   
   render() {
@@ -61,7 +72,7 @@ class App extends React.Component {
           <button onClick={(e) => this.formHandler(e)}>Show/hide new poem form</button>
           {this.state.showPoem ? <NewPoemForm addPoem={this.addPoem} /> : null}
         </div>
-        <PoemsContainer faveHandler={this.faveHandler} poems={this.state.poems} />
+        <PoemsContainer deletePoem={this.deletePoem} faveHandler={this.faveHandler} poems={this.state.poems} />
         <Favorites removeFavorite={this.removeFavorite} poems={favorites}/>
       </div>
     );

@@ -51,6 +51,11 @@ class App extends React.Component {
 
   }
 
+  deletePoem = (e) => {
+    let id = e.target.id
+    fetch(`http://localhost:6001/poems/${id}`)
+  }
+
 
 
 
@@ -61,7 +66,7 @@ class App extends React.Component {
           <button onClick = {this.toggleHidden.bind(this)}>Show/hide new poem form</button>
           {!this.state.isHidden && <NewPoemForm formSubmitHandler={this.formSubmitHandler}/>}
         </div>
-        <PoemsContainer favoritePoem={this.favoritePoem} poems={this.state.poems}/>
+        <PoemsContainer favoritePoem={this.favoritePoem} poems={this.state.poems} deletePoem={this.deletePoem}/>
         <Favorites favorites={this.state.favorites}/>
       </div>
     );

@@ -7,7 +7,6 @@ class Poem extends React.Component {
   }
 
   read=(e)=>{
-    console.log(this.state.read)
     if(this.state.read){
       e.target.innerText = "Mark as unread"
     }else{

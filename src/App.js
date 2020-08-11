@@ -8,7 +8,8 @@ class App extends React.Component {
 
   state = {
     display: true,
-    poems: []
+    poems: [],
+    favorite: []
   }
 
   componentDidMount() {
@@ -58,6 +59,10 @@ class App extends React.Component {
     })
   }
 
+  favoriteHandler = (favObj) => {
+    
+  }
+
   render() {
     return (
       <div className="app">
@@ -65,7 +70,9 @@ class App extends React.Component {
           <button onClick={this.showHandler}> Show/hide new poem form</button>
           {this.state.display ? <NewPoemForm submitHandler={this.submitHandler}/> : null}
         </div>
-        <PoemsContainer poems={this.state.poems} deleteHandler={this.deleteHandler}/>
+        <div>
+        </div>
+        <PoemsContainer poems={this.state.poems} deleteHandler={this.deleteHandler} favoriteHandler={this.favoriteHandler}/>
       </div>
     );
   }

@@ -9,6 +9,9 @@ class Poem extends React.Component {
   deleteHandler = (e) => {
     this.props.deleteHandler(this.props.poem)
   }
+  favoriteHandler = (e) => {
+    this.props.favoriteHandler(this.props.poem)
+  }
   
   render() {
     return (
@@ -20,6 +23,7 @@ class Poem extends React.Component {
         </p>
         <button onClick={this.markHandler} >Mark as read</button>
         <button onClick={this.deleteHandler}>Delete Poems</button>
+        <button onClick={this.favoriteHandler}>Favorite</button>
       </div>
     );
   }

@@ -35,6 +35,20 @@ class App extends React.Component {
     // console.log(e.target.value)
   }
 
+  deletePoem = (poem) => {
+    fetch(url + `/${poem.id}`, {
+      method: "DELETE"
+    })
+    let updatedPoems = this.state.poems.filter(p => {
+      if (p.id !== poem.id){
+        return p
+      }
+    })
+    this.setState({
+      poems: updatedPoems
+    })
+  }
+
   addPoem = () => {
     fetch(url,{
       method: "POST",
@@ -73,7 +87,7 @@ class App extends React.Component {
           title={this.state.title} author={this.state.author} content={this.state.content}
           addPoem={this.addPoem} />}
         </div>
-        <PoemsContainer poems={this.state.poems} />
+        <PoemsContainer deletePoem={this.deletePoem} poems={this.state.poems} />
       </div>
     );
   }

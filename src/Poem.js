@@ -21,6 +21,8 @@ class Poem extends React.Component {
           <strong>- {this.props.poem.author}</strong>
         </p>
         <button onClick={(e) => this.handleClick(e)}>{this.state.clicked ? "Mark as read" : "Mark as unread"}</button>
+        <button onClick={() => this.props.poemAction(this.props.poem.id)}>Favorite</button>
+        <button onClick={() => this.props.deletePoem(this.props.poem.id)}>Delete</button>
       </div>
     );
   }

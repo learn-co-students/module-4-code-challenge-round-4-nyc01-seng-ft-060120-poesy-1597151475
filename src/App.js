@@ -18,17 +18,24 @@ class App extends React.Component {
     this.setState({showForm : !this.state.showForm})
   }
 
+  removePoem = (poem) => {
+    const newPoems = this.state.poems.filter((p) => p.id !== poem.id)
+    this.setState({ poems: newPoems })
+
+    fetch(baseURL + poem.id, {
+      method: 'DELETE',
+      headers: {'Content-Type': 'application/json'},
+    })
+
+  }
+
   handleSubmit = (poem) => {
     this.setState({ poems: [...this.state.poems, poem] })
+    
     fetch(baseURL, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        accepts: 'application/json'
-      },
+      headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(poem)
-    }).then(() => {
-      console.log("Success.");
     })
   }
 
@@ -50,7 +57,7 @@ class App extends React.Component {
           {this.state.showForm && <NewPoemForm handleSubmit = { this.handleSubmit } />}
 
         </div>
-        <PoemsContainer poems = { this.state.poems } markRead = { this.markRead }/>
+        <PoemsContainer poems = { this.state.poems } markRead = { this.markRead } removePoem = { this.removePoem }/>
       </div>
     );
   }

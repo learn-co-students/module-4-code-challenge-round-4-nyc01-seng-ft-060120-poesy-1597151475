@@ -6,10 +6,13 @@ class PoemsContainer extends React.Component {
   markRead = (poem) => {
     this.props.markRead(poem)
   }
+  removePoem = (poem) => {
+    this.props.removePoem(poem)
+  }
 
   getChildrenPoems() {
     return this.props.poems.map((poem, index) => 
-      <Poem key={index} poem={poem} markRead = {this.markRead}/>
+      <Poem key={index} poem={poem} markRead = {this.markRead} removePoem = {this.removePoem}/>
       )
   }
 

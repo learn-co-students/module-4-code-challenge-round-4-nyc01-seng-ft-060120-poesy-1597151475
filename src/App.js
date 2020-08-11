@@ -2,12 +2,14 @@ import React from "react";
 import "./App.css";
 import PoemsContainer from "./PoemsContainer";
 import NewPoemForm from "./NewPoemForm";
+import Favorites from './Favorites'
 
 class App extends React.Component {
 
   state={
     poems: [],
-    display: false
+    display: false,
+    favorites: []
   }
 
   handleFormClick = () => {
@@ -50,14 +52,36 @@ class App extends React.Component {
     })
   }
 
+  favoritesClickHandler = (obj) => {
+    if (!this.state.favorites.includes(obj)) {   
+      let newFavorites = [...this.state.favorites, obj]
+      this.setState({
+        favorites: newFavorites
+      })
+    }
+  }
+
+  deleteHandler = (obj) => {
+    fetch(`http://localhost:6001/poems/${obj.id}`, {
+      method: "DELETE"
+    })
+    let newPoemsArray = this.state.poems.filter(poems => poems.id !== obj.id)
+    let newFavoritesArray = this.state.favorites.filter(favorite => favorite.id !== obj.id)
+    this.setState({
+      poems: newPoemsArray,
+      favorites: newFavoritesArray
+    })
+  }
+
   render() {
     return (
       <div className="app">
         <div className="sidebar">
           <button onClick={this.handleFormClick}>Show/hide new poem form</button>
           {this.state.display && <NewPoemForm newPoemSubmitHandler={this.newPoemSubmitHandler}/>}
+          <Favorites favorites={this.state.favorites}/>
         </div>
-        <PoemsContainer poems={this.state.poems}/>
+        <PoemsContainer poems={this.state.poems} favoritesClickHandler={this.favoritesClickHandler} deleteHandler={this.deleteHandler}/>
       </div>
     );
   }

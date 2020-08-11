@@ -14,6 +14,15 @@ class Poem extends React.Component {
     })
   }
 
+  favoritesClickHandler = () => {
+    this.props.favoritesClickHandler(this.props.poem)
+  }
+
+  deleteClickHandler = (e) => {
+    e.preventDefault()
+    this.props.deleteHandler(this.props.poem)
+  }
+
   render() {
     return (
       <div>
@@ -24,6 +33,12 @@ class Poem extends React.Component {
         </p>
         <button onClick={this.clickHandler}>
           {this.state.read ? "Mark as unread" : "Mark as read" }
+        </button>
+        <button onClick={this.favoritesClickHandler}>
+          Add to Favorites
+        </button>
+        <button onClick={this.deleteClickHandler}>
+          Delete Poem
         </button>
       </div>
     );

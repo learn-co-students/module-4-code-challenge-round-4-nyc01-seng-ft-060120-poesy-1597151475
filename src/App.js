@@ -12,12 +12,15 @@ class App extends React.Component {
     display: false // to toggle between hiding and showing form?
   }
 
-  hideClick = () => {
+  toggleForm = () => {
     let newDisplay = !this.state.display
+    this.setState({
+      display: newDisplay
+    })
   }
 
   submitHandler = (obj) => {
-    fetch("http:localhost:6001/poems", {
+    fetch("http://localhost:6001/poems", {
       method: "POST",
       headers: {
         "accept": "application/json",
@@ -33,7 +36,7 @@ class App extends React.Component {
     .then(obj => {
       let newPoems = [...this.state.poemsArray, obj]
       this.setState({
-        poems: newPoems
+        poemsArray: newPoems
       })
     })
   }
@@ -57,8 +60,8 @@ class App extends React.Component {
     return (
       <div className="app">
         <div className="sidebar">
-          <button>Show/hide new poem form</button>
-          {false && <NewPoemForm submitHandler={this.submitHandler}/>}
+          <button onClick={this.toggleForm}>Show/hide new poem form</button>
+          {this.state.display ?  <NewPoemForm submitHandler={this.submitHandler}/> : null}
         </div>
         <PoemsContainer poems={this.state.poemsArray} />
       </div>

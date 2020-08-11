@@ -2,12 +2,14 @@ import React from "react";
 
 class Poem extends React.Component {
   render() {
+    console.log(this.props.poem.id)
+    let { id, title, content, author } = this.props.poem
     return (
       <div>
-        <h3>Title</h3>
-        <p>Content</p>
+        <h3>{title}</h3>
+        <p>{content}</p>
         <p>
-          <strong>- By Author</strong>
+          <strong>- By {author}</strong>
         </p>
         <button>Mark as read</button>
       </div>

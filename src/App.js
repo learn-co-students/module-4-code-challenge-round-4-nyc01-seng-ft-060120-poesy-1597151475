@@ -7,7 +7,8 @@ const API = "http://localhost:6001/poems"
 
 class App extends React.Component {
   state = {
-    poems: []
+    poems: [],
+    showForm: false
   }
 
   componentDidMount(){
@@ -16,14 +17,23 @@ class App extends React.Component {
     .then(poemsObjects => this.setState({poems: poemsObjects}, () => console.log(this.state.poems)))
   }
 
+  handleClick = () => {
+    this.setState({showForm: !this.state.showForm})
+  }
+
   render() {
+    console.log(this.state.poems)
     return (
       <div className="app">
         <div className="sidebar">
-          <button>Show/hide new poem form</button>
+          <button onClick={this.handleClick}>Show/hide new poem form</button>
+          {this.state.showForm
+          ? <NewPoemForm />
+          : null 
+          }
           {false && <NewPoemForm />}
         </div>
-        <PoemsContainer />
+        <PoemsContainer poems={this.state.poems}/>
       </div>
     );
   }

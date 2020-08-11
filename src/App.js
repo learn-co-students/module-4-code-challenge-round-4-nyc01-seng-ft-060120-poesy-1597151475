@@ -14,8 +14,12 @@ class App extends React.Component {
       .then((poems) => this.setState({ poems: poems }))
   }
 
-  toggleForm = (event) => {
+  toggleForm = () => {
     this.setState({showForm : !this.state.showForm})
+  }
+
+  handleSubmit = (poem) => {
+    this.setState({ poems: [...this.state.poems, poem] })
   }
 
   render() {
@@ -24,7 +28,7 @@ class App extends React.Component {
         <div className="sidebar">
 
           <button onClick = { this.toggleForm }>Show/hide new poem form</button>
-          {this.state.showForm && <NewPoemForm />}
+          {this.state.showForm && <NewPoemForm handleSubmit = { this.handleSubmit } />}
 
         </div>
         <PoemsContainer poems = { this.state.poems } />

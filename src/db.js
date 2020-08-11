@@ -1,5 +1,4 @@
-{
-  "poems": [
+const poems = [
     {
       "id": 1,
       "title": "The Song About the Song",
@@ -25,4 +24,5 @@
       "author": "Alan R. Turner."
     }
   ]
-}
+  
+export default poems

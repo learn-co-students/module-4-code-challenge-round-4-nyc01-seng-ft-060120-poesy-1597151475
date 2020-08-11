@@ -16,12 +16,27 @@ class App extends React.Component {
     })
   }
 
+  postPoem=(poem)=>{
+    fetch("http://localhost:6001/poems", {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(poem)
+    }).then(res => res.json())
+    .then(()=>{
+      this.setState({
+        formDisplay: false
+      })
+    })
+  }
+
   render() {
     return (
       <div className="app">
         <div className="sidebar">
           <button onClick={this.showForm}>New Poem</button>
-          {this.state.formDisplay? <NewPoemForm />:null}
+          {this.state.formDisplay? <NewPoemForm post={this.postPoem}/>:null}
         </div>
         <PoemsContainer />
       </div>

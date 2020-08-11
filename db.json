@@ -2,9 +2,9 @@
   "poems": [
     {
       "id": 1,
-      "title": "The Song About the Song",
-      "content": "This is the song about the show! And it's a show with a song about The Songs we're gonna sing We'll sing you the songs about The song about the show! Songs about the singing we'll do! Songs about the songs about The song about the show! Songs that we'll be singing to you! You'll hear us singing songs about The songs about the songs, The songs about the songs about the songs-- Songs about the songs about The songs about the songs, The songs about the songs about the show!",
-      "author": "Bryan Higgins"
+      "title": "Lift Yourself",
+      "content": "Poopy-di scoop Scoop-diddy-whoo Whoop-di-scoop-di-poop Poop-di-scoopty Scoopty-whoop Whoopity-scoop, whoop-poop Poop-diddy, whoop-scoop Poop, poop Scoop-diddy-whoop Whoop-diddy-scoop Whoop-diddy-scoop, poop",
+      "author": "Kanye"
     },
     {
       "id": 2,
@@ -13,34 +13,22 @@
       "author": "Jon Glass"
     },
     {
-      "id": 3,
-      "title": "Ithaca",
-      "content": "When you set out on your journey to Ithaca, pray that the road is long, full of adventure, full of knowledge. The Brownings and the Mossbergs, the angry Colts -- do not fear them: You will never find such as these on your path, if your thoughts remain lofty, if a fine emotion touches your spirit and your body. The StrapGuns and the Uzis, the fierce Technines you will never encounter, if you do not carry them within your soul, if your soul does not set them up before you. Pray that the road is long.... ",
-      "author": "T Y Alevizos"
+      "title": "Honey garlic chicken",
+      "author": "Rudy",
+      "content": "\nThis sauce not only tastes amazing, it’s incredible satisfying watching it bubble and morph into a perfectly balanced savoury, sweet and garlicky syrup. But your mouth really begins to water watching the sauce simmer all around your chicken and coat it so effortlessly. The bonus of this recipe? It makes up so much sauce that you have enough to drizzle to over some rice or steamed broccoli.",
+      "id": 3
     },
     {
-      "id": 4,
-      "title": "The Visitor",
-      "content": "A ferret visited my house with little tiny cymbals. I felt that I should pick him up but couldn't find my thimbles.He jumped into my dresser drawer (The one with rags and papers) I slammed it shut and taped it tight and gave it to the neighbors.The neighbors liked the furniture but did not like the ferret. They took it to a hardware store to trade it for a parrot.The parrot, now, it sings to me across the narrow alley. I'd like to take it far away, But it's too big to carry.If animals come in your house just make them go away. You can give them to your friends but still you'll have to pay.",
-      "author": "Alan R. Turner."
+      "title": "Chicken thighs or breasts?",
+      "author": "Chez Guevara",
+      "content": "Chicken thighs are perfect for this recipe, since dark meat is super moist and packed full of flavour. Although, we also love this recipe with chicken breasts… they are incredible in this sauce.\n\nThe best part about this Honey Garlic Chicken? You have ALL the ingredients in your kitchen pantry/kitchen tap/refrigerator already.",
+      "id": 4
     },
     {
-      "title": "Oh Yeah",
-      "author": "Olright",
-      "content": "Hello.",
+      "title": "efijwel",
+      "author": "egwfwaesdf",
+      "content": "eawgreergger",
       "id": 5
-    },
-    {
-      "title": "HEllo",
-      "author": "sdfgdhshdfhfhdgshdfs",
-      "content": "ahjsdvbknclkjbvw ",
-      "id": 6
-    },
-    {
-      "title": "sadfgg",
-      "author": "asgdsdsgdggdg",
-      "content": "jsjsjsjsjs",
-      "id": 7
     }
   ]
 }

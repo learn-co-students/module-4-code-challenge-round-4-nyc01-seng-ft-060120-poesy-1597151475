@@ -9,6 +9,10 @@ class Poem extends React.Component {
   clickHandler = (e) => {
     e.target.innerText = "Mark as unread"
   }
+
+  deleteClickHandler = () => {
+    this.props.deleteHandler(this.props.poem.id)
+  }
   render() {
     let poem = this.props.poem
     return (
@@ -19,6 +23,8 @@ class Poem extends React.Component {
           <strong>- By {poem.author}</strong>
         </p>
         <button onClick={this.clickHandler}>Mark as read</button>
+        <button onClick={this.deleteClickHandler}>Delete Poem</button>
+
       </div>
     );
   }

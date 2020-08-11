@@ -20,11 +20,9 @@ class App extends React.Component {
 
   clickHandler = (e) => {
     this.setState({ hidden: !this.state.hidden})
-    console.log(this.state.hidden)
   }
 
   submitHandler = (name, author, content) => {
-    console.log(name, author, content)
     fetch(`http://localhost:6001/poems`, {
       method: 'POST',
       headers: {
@@ -40,6 +38,14 @@ class App extends React.Component {
     // }))
   }
 
+  deleteHandler = (id) => {
+    fetch(`http://localhost:6001/poems/${id}`, {
+      method: 'DELETE'
+    })
+    let newPoems = this.state.poems.filter(poem => poem.id !==id)
+    this.setState({ poems: newPoems })
+  }
+
   
 
 
@@ -51,7 +57,7 @@ class App extends React.Component {
           {this.state.hidden ? null : <NewPoemForm submitHandler={this.submitHandler}/>}
           {/* {false && <NewPoemForm />} */}
         </div>
-        <PoemsContainer poems={this.state.poems}/>
+        <PoemsContainer poems={this.state.poems} deleteHandler={this.deleteHandler}/>
       </div>
     );
   }

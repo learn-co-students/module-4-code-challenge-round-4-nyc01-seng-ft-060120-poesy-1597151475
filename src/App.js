@@ -4,12 +4,24 @@ import PoemsContainer from "./PoemsContainer";
 import NewPoemForm from "./NewPoemForm";
 
 class App extends React.Component {
+
+  state={
+    formDisplay: false
+  }
+
+  showForm = () =>{
+    let newBoolean = !this.state.formDisplay
+    this.setState({
+      formDisplay: newBoolean
+    })
+  }
+
   render() {
     return (
       <div className="app">
         <div className="sidebar">
-          <button>Show/hide new poem form</button>
-          {false && <NewPoemForm />}
+          <button onClick={this.showForm}>New Poem</button>
+          {this.state.formDisplay? <NewPoemForm />:null}
         </div>
         <PoemsContainer />
       </div>

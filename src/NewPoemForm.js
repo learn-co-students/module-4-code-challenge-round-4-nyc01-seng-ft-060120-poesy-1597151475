@@ -14,6 +14,7 @@ class NewPoemForm extends React.Component {
       <form onSubmit={(e)=>{
         e.preventDefault()
         this.props.submitHandler(this.state)
+        this.setState({title: "", author: "", content: ""})
       }}className="new-poem-form">
         <input placeholder="Title" value={this.state.title} onChange={(e)=> {
           this.setState({title: e.target.value})

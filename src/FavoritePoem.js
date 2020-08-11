@@ -1,6 +1,6 @@
 import React from "react";
 
-class Poem extends React.Component {
+class FavoritePoem extends React.Component {
   
   state = {
     markedRead: false
@@ -18,13 +18,11 @@ class Poem extends React.Component {
           this.setState({markedRead: !this.state.markedRead}, () => {
             this.props.readButtonHandler(this.props.poem);
           })
-        }}> {!this.state.markedRead ? "Mark as read" : "Mark as unread"}</button> 
-          <button onClick={()=>{
-            this.props.deleteButtonHandler(this.props.poem)
-            }}> Delete </button>
+        }}> {"Remove from Read Book List"}</button> 
+
       </div>
     );
   }
 }
 
-export default Poem;
+export default FavoritePoem;

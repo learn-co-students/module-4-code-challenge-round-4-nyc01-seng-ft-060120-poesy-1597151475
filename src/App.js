@@ -43,11 +43,30 @@ class App extends React.Component {
     })
   }
 
-  readButtonHandler = () => {
-    console.log("youve reached the read button handler")
 
+  readButtonHandler = (obj) => {
+    console.log("youve reached the read button handler")
+    if(this.state.favorites.includes(obj)){
+      let newArray = [...this.state.favorites]
+      let arr = newArray.filter(obj => obj.id !== obj.id)
+      this.setState({favorites:arr})
+    }else{
+        let newArray = [...this.state.favorites, obj]
+        this.setState({favorites: newArray})
+    }
   }
  
+  deleteButtonHandler = (obj) => {
+    let newArray = [...this.state.poems]
+    let arr = newArray.filter(fobj => fobj.title !== obj.title)
+    this.setState({poems: arr})
+
+    fetch(`${baseUrl}/${obj.id}`, {
+      method: 'delete'
+    })
+    .then(resp => resp.json())
+    }
+
   render() {
     return (
       <div className="app">
@@ -56,10 +75,10 @@ class App extends React.Component {
               this.formToggle()
             }}>Show/hide new poem form</button>
           {this.state.showForm ? <NewPoemForm submitHandler={this.submitHandler}/> : null}
-                  <Favorites /> 
+                  <Favorites poems={this.state.favorites} readButtonHandler={this.readButtonHandler}/> 
 
         </div>
-        <PoemsContainer poems={this.state.poems} readButtonHandler={this.readButtonHandler}/>
+        <PoemsContainer poems={this.state.poems} readButtonHandler={this.readButtonHandler} deleteButtonHandler={this.deleteButtonHandler}/>
       </div>
     );
   }

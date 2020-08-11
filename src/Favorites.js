@@ -6,7 +6,7 @@ const Favorites = (props) => {
         <div className="poems-container">
             <br/>
             <h1>Favorites</h1>
-            {props.favs.length!==0 ? props.favs.map(poem => <Poem key={poem.id} poem={poem} favBool={true} />): "You currently have no favorites."}
+            {props.favs.length!==0 ? props.favs.map(poem => <Poem key={poem.id} poem={poem} inFavContainer={true} />): "You currently have no favorites."}
         </div>
     )
 }

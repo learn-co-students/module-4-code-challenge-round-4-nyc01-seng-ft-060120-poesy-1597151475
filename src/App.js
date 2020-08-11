@@ -43,7 +43,14 @@ class App extends React.Component {
   }
 
   favPoem = (id) => {
-    this.setState({favIds: [...this.state.favIds, id]})
+    let array = [...this.state.favIds]
+    if (array.includes(id)){
+      let foundIndex = array.indexOf(array.find(favId => favId===id))
+      array.splice(foundIndex, 1)
+    } else {
+      array.push(id)
+    }
+    this.setState({favIds: array})
   }
 
   getFavs = () => {

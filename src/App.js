@@ -38,6 +38,19 @@ class App extends React.Component {
     
   }
 
+  deletePoem = (obj) => {
+    // console.log("in app delete", api + obj.id)
+    fetch(api + obj.id, {
+      method: "DELETE",
+      headers: {
+        "content-type":"application/json",
+        Accept: "application/json"
+      }
+    })
+    let newArray = this.state.poems.filter(poem => poem.id !== obj.id)
+    this.setState({ poems: newArray})
+  }
+
   render() {
     return (
       <div className="app">
@@ -45,7 +58,7 @@ class App extends React.Component {
           <button onClick={this.clickForm}>Show/hide new poem form</button>
           {this.state.hideForm && <NewPoemForm addPoem={this.addPoem}/>}
         </div>
-        <PoemsContainer poems={this.state.poems}/>
+        <PoemsContainer deletePoem={this.deletePoem} poems={this.state.poems}/>
       </div>
     );
   }

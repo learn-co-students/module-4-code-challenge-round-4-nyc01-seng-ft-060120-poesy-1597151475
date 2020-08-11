@@ -6,13 +6,34 @@ import NewPoemForm from "./NewPoemForm";
 class App extends React.Component {
 
   state={
-    formDisplay: false
+    formDisplay: false,
+    poemObjects: []
   }
 
   showForm = () =>{
-    let newBoolean = !this.state.formDisplay
+    let newBoolie = !this.state.formDisplay
     this.setState({
-      formDisplay: newBoolean
+      formDisplay: newBoolie
+    })
+  }
+
+  componentDidMount=()=>{
+    fetch("http://localhost:6001/poems")
+    .then(response => response.json())
+    .then(poems =>{
+      this.setState({
+        poemObjects: poems
+      })
+    })
+  }
+
+  refresh=()=>{
+    fetch("http://localhost:6001/poems")
+    .then(response => response.json())
+    .then(poems =>{
+      this.setState({
+        poemObjects: poems
+      })
     })
   }
 
@@ -28,6 +49,7 @@ class App extends React.Component {
       this.setState({
         formDisplay: false
       })
+      this.refresh()
     })
   }
 
@@ -38,7 +60,7 @@ class App extends React.Component {
           <button onClick={this.showForm}>New Poem</button>
           {this.state.formDisplay? <NewPoemForm post={this.postPoem}/>:null}
         </div>
-        <PoemsContainer />
+        <PoemsContainer poems={this.state.poemObjects}/>
       </div>
     );
   }

@@ -1,6 +1,19 @@
 import React from "react";
 
 class Poem extends React.Component {
+
+  state = {
+    reddIt: false
+  }
+
+
+  readBtn = () => {
+    this.setState({
+      reddIt: !this.state.reddIt
+    })
+    console.log(this.state)
+  }
+
   render() {
     return (
       <div>
@@ -9,7 +22,7 @@ class Poem extends React.Component {
         <p>
           <strong>- {this.props.poem.author}</strong>
         </p>
-        <button>Mark as read</button>
+        <button onClick={this.readBtn}>{this.state.reddIt ? 'Mark as read' : 'Mark as unread'} </button>
       </div>
     );
   }

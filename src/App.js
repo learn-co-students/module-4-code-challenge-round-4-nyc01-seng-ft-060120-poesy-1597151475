@@ -8,7 +8,6 @@ class App extends React.Component {
   state = {
     poems: [],
     showForm: false
-
   }
   
   componentDidMount() {
@@ -23,12 +22,23 @@ class App extends React.Component {
     this.setState({showForm: !this.state.showForm})
   }
 
-  addPoem = () => {
-    
+  addPoem = (poemObj) => {
+    console.log(poemObj)
+      fetch("http://localhost:6001/poems",{
+        method: 'POST',
+        headers:{
+          'content-type': 'application/json',
+          'accept': 'application/json'
+        },
+        body: JSON.stringify({
+          'title': poemObj.title,
+          'content': poemObj.content,
+          'author': poemObj.author
+        })
+      })
+      .then(resp => resp.json())
+      .then(data => this.componentDidMount(data))
   }
-
-
-
   
   render() {
     return (

@@ -10,7 +10,7 @@ class NewPoemForm extends React.Component {
 
   handleSubmit=(e)=> {
     e.preventDefault()
-    console.log(e)
+    this.props.addPoem(this.state)
   }
 
   handleChange=(e) => {
@@ -23,7 +23,7 @@ class NewPoemForm extends React.Component {
  
  
   render() {
-    console.log(this.state)
+    // console.log(this.state)
     return (
       <form onSubmit={this.handleSubmit} className="new-poem-form">
         <input onChange={this.handleChange} name="title" value={this.state.title} placeholder="Title" />
